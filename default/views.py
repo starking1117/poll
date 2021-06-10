@@ -35,3 +35,9 @@ class PollCreate(CreateView): #CreatView找應用程式底下的temp>defalut
     def get_success_url(self):
        return "/poll/{}/".format(self.object.id)
     #sellf(PollCreate) 
+class PollEdit(UpdateView): #撈與pk相同的id
+    model = Poll
+    fields = ['subject','desc']
+    def get_success_url(self):
+        return "/poll/{}/".format(self.object.id)
+#CreateView與UpdateView很相同 只是一個是新增一個是修改
