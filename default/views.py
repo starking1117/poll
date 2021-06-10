@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, RedirectView
+from django.views.generic import ListView, DetailView, RedirectView,CreateView,UpdateView,DeleteView #新增修改刪掉
 from .models import Poll, Option
 
 # Create your views here.
@@ -25,3 +25,13 @@ class PollVote(RedirectView):
         op.count += 1
         op.save()
         return "/poll/{}/".format(op.poll_id)
+class PollCreate(CreateView): #CreatView找應用程式底下的temp>defalut
+    model = Poll #必要 
+    fields = ['subject','desc'] #顯示subject,desc #顯示全部'__all__' #必要
+    #success_url = "/poll/" #/poll/主機後開始 #poll/原網址多加poll/
+    # template_name = 'general_form.html' 自己指定頁面範本
+    #固定不動的success_url 
+    #不固定的
+    def get_success_url(self):
+       return "/poll/{}/".format(self.object.id)
+    #sellf(PollCreate) 
