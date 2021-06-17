@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, RedirectView,CreateView,UpdateView,DeleteView #新增修改刪掉
+from django.views.generic import ListView, DetailView, RedirectView,CreateView,UpdateView,DeleteView
+from django.views.generic.base import TemplateView #新增修改刪掉
 from .models import Poll, Option
 
 # Create your views here.
@@ -45,3 +46,28 @@ class PollEdit(UpdateView): #撈與pk相同的id #poll_form.html
 class PollDelete(DeleteView): #poll_confirm_delete.html
     model = Poll
     success_url = "/poll/" #絕對路徑
+class OptionCreate(CreateView):
+    model = Option
+    fields = ['title'] 
+    template_name = "default/poll_form.html"
+    def form_valid(self,form):
+        form.instance.poll_id = self.kwargs['pk'] #填入值
+        return super().form_valid(form) #呼叫親代去處理
+    def get_success_url(self):
+        return "/poll/{}/".format(self.object.poll_id)
+        #指定路徑當頁面範本
+
+class OptionEdit(UpdateView):
+    model = Option
+    fields = ['title']
+    pk_url_kwarg = 'oid'
+    template_name="default/poll_form.html"
+    def get_success_url(self):
+        return "/poll/{}/".format(self.object.poll_id)
+        #不用驗證 不用form_valid
+
+class OptionDelete(DeleteView):
+    model = Option
+    pk_url_kwarg = 'oid'
+    def get_success_url(self):
+        return "/poll/{}/".format(self.object.poll_id)

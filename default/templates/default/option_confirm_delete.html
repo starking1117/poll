@@ -2,8 +2,8 @@
 
 {% block content %}
 <div>
-    確認刪除投票主題【{{poll.subject}}】嗎？
-    <p>{{poll.desc}}</p>
+    確認刪除投票選項【{{ option.title }}】嗎？
+    <br>票數是{{ option.count }}
 </div>
 
 <form action="" method="POST">

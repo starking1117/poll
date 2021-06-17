@@ -10,7 +10,7 @@ class Poll(models.Model):
         return "{}: {}".format(self.id, self.subject)
 
 class Option(models.Model):
-    poll_id = models.IntegerField()
+    poll_id = models.IntegerField() #紀錄所屬投票主題
     title = models.CharField(max_length=100 ,verbose_name='投票選項')
     count = models.IntegerField(default=0)
 
