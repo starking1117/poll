@@ -3,7 +3,7 @@
 {% block content %}
 <h1>{{ poll.subject }}</h1>
 
-<p>建立日期：{{ poll.date_created }}｜<a href="/poll/{{ p.id }}/edit/">編輯</a></p>
+<p>建立日期：{{ poll.date_created }}｜<a href="/poll/{{ poll.id }}/edit/">編輯</a></p>
 <p>{{ poll.desc }}</p>
 <a href="/poll/{{ poll.id }}/add">新增選項</a>
 <ul>
