@@ -11,7 +11,7 @@ class Poll(models.Model):
 
 class Option(models.Model):
     poll_id = models.IntegerField()
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100 ,verbose_name='投票選項')
     count = models.IntegerField(default=0)
 
     def __str__(self):

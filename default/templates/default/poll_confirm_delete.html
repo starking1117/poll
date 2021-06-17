@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    確認刪除投票主題【{{poll.subject}}】
+    <p>{{poll.desc}}</p>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+<input type="submit" value="確定刪除">
+</form>
+{% endblock content %}

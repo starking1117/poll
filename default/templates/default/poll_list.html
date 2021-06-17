@@ -8,7 +8,8 @@
     <li>
         {{ p.date_created }}
         <a href="/poll/{{ p.id }}/">{{ p.subject }}</a>
-        <a href="/poll/{{ p.id }}/edit/">編輯</a>
+        ｜<a href="/poll/{{ p.id }}/edit/">編輯</a>
+        ｜<a href="/poll/{{ p.id }}/delete/">刪除</a>
     </li>
     {% endfor %}
 </ul>  
