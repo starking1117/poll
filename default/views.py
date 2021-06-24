@@ -36,6 +36,7 @@ class PollCreate(CreateView): #CreatView找應用程式底下的temp>defalut
     def get_success_url(self):
        return "/poll/{}/".format(self.object.id)
     #sellf(PollCreate) 
+    
 class PollEdit(UpdateView): #撈與pk相同的id #poll_form.html
     #pk_url_kwarg = pid 
     model = Poll
